@@ -1,0 +1,125 @@
+﻿@page "/"
+@using System.Text.Json.Nodes
+@using System.Net.Http.Headers
+@using System.Net
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject HttpClient Http
+@inject Microsoft.JSInterop.IJSRuntime JS
+<PageTitle>Index</PageTitle>
+
+<h1>PDF Conversion API</h1>
+
+Enter your document for pdf conversion.
+
+@*<SurveyPrompt Title="How is Blazor working for you?" />*@
+
+<InputFile OnChange="GetFile"></InputFile>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertToPdf">Convert To Pdf </button>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertHtmlToPdf">Convert Html To Pdf </button>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertWordToPdf">Convert word To Pdf </button>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertPptxToPdf">Convert pptx To Pdf </button>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertExcelToPdf">Convert excel To Pdf </button>
+<br />
+<br />
+<button class="btn btn-primary" @onclick="ConvertImageToPdf">Convert image To Pdf </button>
+
+@*<p>This component demonstrates fetching data from a service.</p>*@
+
+@functions
+{
+    private IBrowserFile file;
+
+    private async Task GetFile(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+    }
+    private async Task ConvertToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/ConvertToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task ConvertHtmlToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/HtmlToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task ConvertWordToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/WordToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task ConvertExcelToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/ExcelToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task ConvertPptxToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/PptxToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task ConvertImageToPdf()
+    {
+        string fileName = file.Name;
+        HttpClient client = new HttpClient();
+        var content = new MultipartFormDataContent();
+        content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
+        client.BaseAddress = new Uri("https://localhost:7019/");
+        var response = await client.PostAsync("/api/Product/ImageToPdf", content);
+        DownloadPdf(response, fileName);
+    }
+
+    private async Task DownloadPdf(HttpResponseMessage response, string fileName)
+    {
+        string[] fileFormat = fileName.Split(".");
+        string fileOrginalName = fileFormat[0];
+        MemoryStream ms = new MemoryStream();
+        Stream readStream = await response.Content.ReadAsStreamAsync();
+        readStream.CopyTo(ms);
+        var streamArray = ms.ToArray();
+        string base64String = Convert.ToBase64String(streamArray);
+        byte[] imageBytes = Convert.FromBase64String(base64String);
+        JS.SaveAs(fileOrginalName + ".pdf", imageBytes);
+    }
+}

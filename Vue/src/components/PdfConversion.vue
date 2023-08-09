@@ -18,7 +18,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/ConvertToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/ConvertToPdf", {
         method: 'POST',
         body: formData
       })
@@ -29,7 +29,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/HtmlToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/HtmlToPdf", {
         method: 'POST',
         body: formData
       })
@@ -40,7 +40,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/WordToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/WordToPdf", {
         method: 'POST',
         body: formData
       })
@@ -51,7 +51,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/ImageToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/ImageToPdf", {
         method: 'POST',
         body: formData
       })
@@ -62,7 +62,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/PptxToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/PptxToPdf", {
         method: 'POST',
         body: formData
       })
@@ -74,7 +74,7 @@ export default{
       debugger;
       const formData = new FormData();
       formData.append('file', this.file);
-      let response = await fetch("https://localhost:7019/api/Product/ExcelToPdf", {
+      let response = await fetch("https://localhost:7019/api/PdfConversion/ExcelToPdf", {
         method: 'POST',
         body: formData
       })

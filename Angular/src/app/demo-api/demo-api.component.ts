@@ -32,7 +32,7 @@ export class DemoApiComponent {
     switch (buttonType) {
       case 'ConvertToPdf':
         
-        response = await fetch("https://localhost:7019/api/Product/ConvertToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/ConvertToPdf", {
           method: 'POST',
           body: formData
         })
@@ -40,35 +40,35 @@ export class DemoApiComponent {
         break;
       case 'ConvertHtmlToPdf':
         
-        response = await fetch("https://localhost:7019/api/Product/HtmlToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/HtmlToPdf", {
           method: 'POST',
           body: formData
         })
         
         break;
         case 'ConvertWordToPdf':
-        response = await fetch("https://localhost:7019/api/Product/WordToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/WordToPdf", {
           method: 'POST',
           body: formData
         })
   
         break;
         case 'ConvertExcelToPdf':
-        response = await fetch("https://localhost:7019/api/Product/ExcelToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/ExcelToPdf", {
           method: 'POST',
           body: formData
         })
         
         break;
         case 'ConvertPptxToPdf':
-        response = await fetch("https://localhost:7019/api/Product/PptxToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/PptxToPdf", {
           method: 'POST',
           body: formData
         })
        
         break;
         case 'ConvertImageToPdf':
-        response = await fetch("https://localhost:7019/api/Product/ImageToPdf", {
+        response = await fetch("https://localhost:7019/api/PdfConversion/ImageToPdf", {
           method: 'POST',
           body: formData
         })

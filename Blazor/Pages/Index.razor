@@ -51,7 +51,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/ConvertToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/ConvertToPdf", content);
         DownloadPdf(response, fileName);
     }
 
@@ -62,7 +62,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/HtmlToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/HtmlToPdf", content);
         DownloadPdf(response, fileName);
     }
 
@@ -73,7 +73,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/WordToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/WordToPdf", content);
         DownloadPdf(response, fileName);
     }
 
@@ -84,7 +84,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/ExcelToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/ExcelToPdf", content);
         DownloadPdf(response, fileName);
     }
 
@@ -95,7 +95,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/PptxToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/PptxToPdf", content);
         DownloadPdf(response, fileName);
     }
 
@@ -106,7 +106,7 @@ Enter your document for pdf conversion.
         var content = new MultipartFormDataContent();
         content.Add(new StreamContent(file.OpenReadStream()), "file", fileName);
         client.BaseAddress = new Uri("https://localhost:7019/");
-        var response = await client.PostAsync("/api/Product/ImageToPdf", content);
+        var response = await client.PostAsync("/api/PdfConversion/ImageToPdf", content);
         DownloadPdf(response, fileName);
     }
 

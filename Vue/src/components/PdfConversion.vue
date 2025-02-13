@@ -106,14 +106,15 @@ export default{
 
 <template>
   <div class="greetings">
+    <div style="font-size: 40px;">PDF Convert Operations</div>
+    <br/>
     <input type="file" @change="uploadFile" /><br><br>
     <button @click="ConvertToPdf">Convert to PDF</button><br><br>
     <button @click="ConvertHtmlToPdf">Convert HtML to PDF</button><br><br>
     <button @click="ConvertWordToPdf">Convert Word to PDF</button><br><br>
     <button @click="ConvertPptxToPdf">Convert Pptx to PDF</button><br><br>
     <button @click="ConvertExcelToPdf">Convert Excel to PDF</button><br><br>
-    <button @click="ConvertImageToPdf">Convert Image to PDF</button><br><br>
-    
+    <button @click="ConvertImageToPdf">Convert Image to PDF</button><br><br>  
     
   </div>
 </template>
